@@ -2,6 +2,9 @@
 
 set -e;
 
+# Ensure git always uses HTTPS for github.com, preventing SSH permission issues.
+git config --global url."https://github.com/".insteadOf "git@github.com:"
+
 if test $BUILD_FOCUS = WIKI
 then
     # Set environment variables used in the next script
@@ -51,4 +54,3 @@ else
     # Swap it back
     git remote set-url origin ${OLD_ORIGIN};
 fi
-
